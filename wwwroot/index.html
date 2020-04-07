@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REST CLIENT</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">REST CLIENT</a>
+    </nav>
+    <div class="container">
+        <div class="form-inline p-2 border">
+            <div class="input-group">
+                <div class="input-group-prepend"><div class="input-group-text">Название</div></div>
+                <input type="text" class="form-control" id="addTitleInput">
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend"><div class="input-group-text">Автор</div></div>
+                <input type="text" class="form-control" id="addAuthorInput">
+            </div>
+            <button onclick="addBook()" class="btn btn-success">Добавить</button>
+        </div>
+        <div class="form-inline p-2 border">
+            <div class="input-group">
+                <div class="input-group-prepend"><div class="input-group-text">ID</div></div>
+                <input type="number" class="form-control" id="editIdInput">
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend"><div class="input-group-text">Название</div></div>
+                <input type="text" class="form-control" id="editTitleInput">
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend"><div class="input-group-text">Автор</div></div>
+                <input type="text" class="form-control" id="editAuthorInput">
+            </div>
+            <button onclick="editBook()" class="btn btn-primary">Редактировать</button>
+        </div>
+        <div class="form-inline p-2 border">
+            <div class="input-group">
+                <div class="input-group-prepend"><div class="input-group-text">ID</div></div>
+                <input type="number" class="form-control" id="deleteIdInput">
+            </div>
+            <button onclick="deleteBook()" class="btn btn-danger">Удалить</button>
+        </div>
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th>#</th>
+                    <th>Название</th>
+                    <th>Автор</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+            </tbody>
+        </table>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
