@@ -60,11 +60,15 @@ namespace REST
 
         public static BookDto FindBook(int id)
         {
-            var result = Books.FirstOrDefault(b => b.Id == id);
+            var book = Books.FirstOrDefault(b => b.Id == id);
+            if (book == null)
+            {
+                return null;
+            }
             return new BookDto { 
-                Id = result.Id,
-                Author = result.Author,
-                Title = result.Title
+                Id = book.Id,
+                Author = book.Author,
+                Title = book.Title
             };
         }
 

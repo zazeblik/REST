@@ -37,12 +37,14 @@ namespace REST
 
             app.UseRouting();
 
-            app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+
+            BookRepository.CreateBook("121", "111");
+            BookRepository.CreateBook("222", "222");
+            BookRepository.CreateBook("333", "333");
         }
     }
 }
