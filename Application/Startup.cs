@@ -1,16 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using REST.Domain.Book;
+using REST.Infrastructure;
+using REST.Infrastructure.Repositories;
 
-namespace REST
+namespace REST.Application
 {
     public class Startup
     {
@@ -24,7 +22,10 @@ namespace REST
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<BooksContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddControllers();
+            services.AddScoped<IBookRepository, BookRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,10 +44,6 @@ namespace REST
             {
                 endpoints.MapControllers();
             });
-
-            BookRepository.CreateBook("121", "111");
-            BookRepository.CreateBook("222", "222");
-            BookRepository.CreateBook("333", "333");
         }
     }
 }
